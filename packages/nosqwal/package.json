@@ -1,0 +1,28 @@
+{
+  "name": "nosqwal",
+  "version": "0.0.0",
+  "description": "My superior module",
+  "license": "MIT",
+  "repository": "mastilver/nosqwal",
+  "author": {
+    "name": "Thomas Sileghem",
+    "email": "th.sileghem@gmail.com",
+    "url": "mastilver.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "exit 0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {
+    "nosqwal-memory": "^0.1.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,38 @@
+{
+  "name": "nosqwal-memory",
+  "version": "0.0.0",
+  "description": "My sweet module",
+  "license": "MIT",
+  "repository": "mastilver/nosqwal-memory",
+  "author": {
+    "name": "Thomas Sileghem",
+    "email": "th.sileghem@gmail.com",
+    "url": "mastilver.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "nyc ava",
+    "postinstall": "rm -rf test && cp -r node_modules/nosqwal-test/test test"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "coveralls": "^2.11.12",
+    "nyc": "^7.1.0",
+    "nosqwal-test": "^0.1.0"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  }
+}

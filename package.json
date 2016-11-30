@@ -1,0 +1,45 @@
+{
+  "name": "nosqwal",
+  "version": "0.0.0",
+  "description": "My sweet module",
+  "license": "MIT",
+  "repository": "mastilver/nosqwal",
+  "author": {
+    "name": "Thomas Sileghem",
+    "email": "th.sileghem@gmail.com",
+    "url": "mastilver.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "lerna run test"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "coveralls": "^2.11.12",
+    "nyc": "^7.1.0",
+    "xo": "^0.16.0",
+    "lerna": "2.0.0-beta.30"
+  },
+  "xo": {
+    "esnext": true,
+    "space": 4,
+    "ignores": [
+      "**/coverage/**"
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  }
+}
