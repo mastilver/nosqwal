@@ -24,11 +24,26 @@ test('create, get, update, delete', async t => {
     await userCollection.update(user);
     const updatedUser = await userCollection.get(user.id);
 
-    console.log(updatedUser);
-
     t.is(updatedUser.name, 'bob');
 
     await userCollection.delete(user.id);
 
     await t.throws(userCollection.get(user.id));
+});
+
+test('create should accept an id', async t => {
+    const db = noSqwal();
+    const userCollection = db.defineCollection('user');
+
+    const savedUser = await userCollection.create({
+        id: 'user-1',
+        name: 'alice'
+    });
+
+    t.is(savedUser.id, 'user-1');
+
+    const user = await userCollection.get('user-1');
+
+    t.is(user.id, 'user-1');
+    t.is(user.name, 'alice');
 });
