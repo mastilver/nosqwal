@@ -24,7 +24,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.15.2",
+    "ava": "^0.17.0",
     "coveralls": "^2.11.12",
     "nyc": "^7.1.0",
     "xo": "^0.16.0",
@@ -37,7 +37,8 @@
       "**/coverage/**"
     ],
     "rules": {
-      "ava/no-ignored-test-files": "off"
+      "ava/no-ignored-test-files": "off",
+      "eqeqeq": "off"
     }
   },
   "nyc": {
