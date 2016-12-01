@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "nyc ava",
-    "postinstall": "rm -rf test && cp -r node_modules/nosqwal-test/test test"
+    "postinstall": "rm -rf test && ln -s node_modules/nosqwal-test/test ./"
   },
   "files": [
     "index.js"
