@@ -13,7 +13,8 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo && lerna run test"
+    "test": "xo && lerna run test",
+    "bootstrap": "lerna bootstrap && lerna run postinstall"
   },
   "files": [
     "index.js"
@@ -34,7 +35,10 @@
     "space": 4,
     "ignores": [
       "**/coverage/**"
-    ]
+    ],
+    "rules": {
+      "ava/no-ignored-test-files": "off"
+    }
   },
   "nyc": {
     "reporter": [
