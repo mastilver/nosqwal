@@ -148,16 +148,20 @@ Operator can be:
 | `$nin` | array do not contains value | `any` | `Array` |
 | `$len` | array length equal | `number` | `Array` |
 
-#### order
+#### orderBy
 
 Type: `array`<br>
 Default: []
 
-##### order[].path
+##### orderBy[][0]
 
 Type: `string`<br>
 
-##### order[].desc
+Path / key to order
+
+##### orderBy[][1]
+
+Is ascending
 
 Type: `bool`<br>
 Default: `true`

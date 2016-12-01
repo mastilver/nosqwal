@@ -50,6 +50,22 @@ module.exports = function () {
                         .then(doc => {
                             collection.remove(doc.$loki);
                         });
+                },
+
+                query({where, orderBy = [], limit, offset = 0} = {}) {
+                    let query = collection.chain();
+
+                    if (orderBy.length > 0) {
+                        orderBy = orderBy.map(x => [x[0], !x[1]]);
+
+                        query = query.compoundsort(orderBy);
+                    }
+
+                    const docs = query
+                                .find(where)
+                                .data();
+
+                    return Promise.resolve(docs);
                 }
             };
         }
