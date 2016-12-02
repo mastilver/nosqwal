@@ -61,6 +61,12 @@ module.exports = function () {
                         query = query.compoundsort(orderBy);
                     }
 
+                    query = query.offset(offset);
+
+                    if (limit != null) {
+                        query = query.limit(limit);
+                    }
+
                     const docs = query
                                 .find(where)
                                 .data();
