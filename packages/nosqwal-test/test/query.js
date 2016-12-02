@@ -1,10 +1,15 @@
 import test from 'ava';
+import cuid from 'cuid';
 
 const noSqwal = global.noSqwalAdaptor;
 
-test('query all documents', async t => {
+function getCollection() {
     const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    return db.defineCollection(cuid());
+}
+
+test('query all documents', async t => {
+    const userCollection = getCollection();
 
     await userCollection.create({
         name: 'bob'
@@ -22,8 +27,7 @@ test('query all documents', async t => {
 });
 
 test('query with eq condition', async t => {
-    const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    const userCollection = getCollection();
 
     await userCollection.create({
         name: 'bob'
@@ -44,8 +48,7 @@ test('query with eq condition', async t => {
 });
 
 test('query with ascending sorting', async t => {
-    const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    const userCollection = getCollection();
 
     await userCollection.create({
         name: 'bob'
@@ -67,8 +70,7 @@ test('query with ascending sorting', async t => {
 });
 
 test('query with descending sorting', async t => {
-    const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    const userCollection = getCollection();
 
     await userCollection.create({
         name: 'bob'
@@ -90,8 +92,7 @@ test('query with descending sorting', async t => {
 });
 
 test('query only the first 10 documents', async t => {
-    const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    const userCollection = getCollection();
 
     await Promise.all([...Array(100)].map((_, i) => {
         return userCollection.create({
@@ -112,8 +113,7 @@ test('query only the first 10 documents', async t => {
 });
 
 test('query only 10 documents using offset', async t => {
-    const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    const userCollection = getCollection();
 
     await Promise.all([...Array(100)].map((_, i) => {
         return userCollection.create({
@@ -135,8 +135,7 @@ test('query only 10 documents using offset', async t => {
 });
 
 test('query only 10 documents using offset and sort descending', async t => {
-    const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    const userCollection = getCollection();
 
     await Promise.all([...Array(100)].map((_, i) => {
         return userCollection.create({

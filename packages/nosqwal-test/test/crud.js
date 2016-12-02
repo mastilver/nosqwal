@@ -1,10 +1,15 @@
 import test from 'ava';
+import cuid from 'cuid';
 
 const noSqwal = global.noSqwalAdaptor;
 
-test('create, get, update, delete', async t => {
+function getCollection() {
     const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    return db.defineCollection(cuid());
+}
+
+test('create, get, update, delete', async t => {
+    const userCollection = getCollection();
 
     const savedUser = await userCollection.create({
         name: 'alice'
@@ -32,8 +37,7 @@ test('create, get, update, delete', async t => {
 });
 
 test('create should accept an id', async t => {
-    const db = noSqwal();
-    const userCollection = db.defineCollection('user');
+    const userCollection = getCollection();
 
     const savedUser = await userCollection.create({
         id: 'user-1',
