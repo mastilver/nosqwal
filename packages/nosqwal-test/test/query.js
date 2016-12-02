@@ -93,11 +93,11 @@ test('query only the first 10 documents', async t => {
     const db = noSqwal();
     const userCollection = db.defineCollection('user');
 
-    for (let i = 0, len = 100; i < len; i++) {
-        await userCollection.create({
+    await Promise.all((Array.from({length: 100})).map((_, i) => {
+        return userCollection.create({
             name: `user-${i < 10 ? '0' + i : i}`
         });
-    }
+    }));
 
     const users = await userCollection.query({
         limit: 10,
@@ -115,11 +115,11 @@ test('query only 10 documents using offset', async t => {
     const db = noSqwal();
     const userCollection = db.defineCollection('user');
 
-    for (let i = 0, len = 100; i < len; i++) {
-        await userCollection.create({
+    await Promise.all((Array.from({length: 100})).map((_, i) => {
+        return userCollection.create({
             name: `user-${i < 10 ? '0' + i : i}`
         });
-    }
+    }));
 
     const users = await userCollection.query({
         limit: 10,
@@ -138,11 +138,11 @@ test('query only 10 documents using offset and sort descending', async t => {
     const db = noSqwal();
     const userCollection = db.defineCollection('user');
 
-    for (let i = 0, len = 100; i < len; i++) {
-        await userCollection.create({
+    await Promise.all((Array.from({length: 100})).map((_, i) => {
+        return userCollection.create({
             name: `user-${i < 10 ? '0' + i : i}`
         });
-    }
+    }));
 
     const users = await userCollection.query({
         limit: 10,
