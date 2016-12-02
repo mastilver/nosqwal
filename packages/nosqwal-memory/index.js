@@ -52,13 +52,20 @@ module.exports = function () {
                         });
                 },
 
-                query({where, orderBy = [], limit, offset = 0} = {}) {
+                query(options) {
+                    // NOTE: node@4 doesn't support spead opperator by default
+                    options = options || {};
+                    const where = options.where;
+                    const orderBy = options.orderBy || [];
+                    const limit = options.limit;
+                    const offset = options.offset || 0;
+
                     let query = collection.chain();
 
                     if (orderBy.length > 0) {
-                        orderBy = orderBy.map(x => [x[0], !x[1]]);
+                        const lokiOrderBy = orderBy.map(x => [x[0], !x[1]]);
 
-                        query = query.compoundsort(orderBy);
+                        query = query.compoundsort(lokiOrderBy);
                     }
 
                     query = query.offset(offset);

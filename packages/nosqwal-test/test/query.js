@@ -93,7 +93,7 @@ test('query only the first 10 documents', async t => {
     const db = noSqwal();
     const userCollection = db.defineCollection('user');
 
-    await Promise.all((Array.from({length: 100})).map((_, i) => {
+    await Promise.all([...Array(100)].map((_, i) => {
         return userCollection.create({
             name: `user-${i < 10 ? '0' + i : i}`
         });
@@ -115,7 +115,7 @@ test('query only 10 documents using offset', async t => {
     const db = noSqwal();
     const userCollection = db.defineCollection('user');
 
-    await Promise.all((Array.from({length: 100})).map((_, i) => {
+    await Promise.all([...Array(100)].map((_, i) => {
         return userCollection.create({
             name: `user-${i < 10 ? '0' + i : i}`
         });
@@ -138,7 +138,7 @@ test('query only 10 documents using offset and sort descending', async t => {
     const db = noSqwal();
     const userCollection = db.defineCollection('user');
 
-    await Promise.all((Array.from({length: 100})).map((_, i) => {
+    await Promise.all([...Array(100)].map((_, i) => {
         return userCollection.create({
             name: `user-${i < 10 ? '0' + i : i}`
         });
