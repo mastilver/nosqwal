@@ -63,7 +63,10 @@ module.exports = function () {
                     let query = collection.chain();
 
                     if (orderBy.length > 0) {
-                        const lokiOrderBy = orderBy.map(x => [x[0], !x[1]]);
+                        const lokiOrderBy = orderBy.map(x => {
+                            const isAsc = x[1] != null && !x[1];
+                            return [x[0], isAsc];
+                        });
 
                         query = query.compoundsort(lokiOrderBy);
                     }

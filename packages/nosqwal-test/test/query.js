@@ -47,7 +47,7 @@ test('query with eq condition', async t => {
     t.truthy(users.find(x => x.name === 'alice'));
 });
 
-test('query with ascending sorting', async t => {
+test('query with ascending ordering', async t => {
     const userCollection = getCollection();
 
     await userCollection.create({
@@ -69,7 +69,7 @@ test('query with ascending sorting', async t => {
     t.is(users[1].name, 'bob');
 });
 
-test('query with descending sorting', async t => {
+test('query with descending ordering', async t => {
     const userCollection = getCollection();
 
     await userCollection.create({
@@ -102,7 +102,7 @@ test('query only the first 10 documents', async t => {
 
     const users = await userCollection.query({
         limit: 10,
-        sortBy: [
+        orderBy: [
             ['name']
         ]
     });
@@ -124,7 +124,7 @@ test('query only 10 documents using offset', async t => {
     const users = await userCollection.query({
         limit: 10,
         offset: 15,
-        sortBy: [
+        orderBy: [
             ['name']
         ]
     });
@@ -134,7 +134,7 @@ test('query only 10 documents using offset', async t => {
     t.is(users[9].name, 'user-24');
 });
 
-test('query only 10 documents using offset and sort descending', async t => {
+test('query only 10 documents using offset and descending order', async t => {
     const userCollection = getCollection();
 
     await Promise.all([...Array(100)].map((_, i) => {
