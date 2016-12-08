@@ -12,6 +12,7 @@ $ npm install --save nosqwal-memory
 ## Adapters
 
 - [In memory](https://www.npmjs.com/package/nosqwal-memory)
+- [Couchbase](https://github.com/mastilver/nosqwal-couchbase)
 
 ## Usage
 
