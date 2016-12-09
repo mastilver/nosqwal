@@ -14,9 +14,9 @@ module.exports = function () {
                 create(doc) {
                     const id = cuid();
 
-                    const toSave = Object.assign({
+                    const toSave = Object.assign({}, doc, {
                         id
-                    }, doc);
+                    });
 
                     collection.insert(toSave);
                     return Promise.resolve(toSave);

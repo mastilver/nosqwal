@@ -36,7 +36,7 @@ test('create, get, update, delete', async t => {
     await t.throws(userCollection.get(user.id));
 });
 
-test('create should accept an id', async t => {
+test('create should override id', async t => {
     const userCollection = getCollection();
 
     const savedUser = await userCollection.create({
@@ -44,10 +44,10 @@ test('create should accept an id', async t => {
         name: 'alice'
     });
 
-    t.is(savedUser.id, 'user-1');
+    t.not(savedUser.id, 'user-1');
 
-    const user = await userCollection.get('user-1');
+    const user = await userCollection.get(savedUser.id);
 
-    t.is(user.id, 'user-1');
+    t.not(user.id, 'user-1');
     t.is(user.name, 'alice');
 });
