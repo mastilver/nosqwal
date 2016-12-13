@@ -13,6 +13,7 @@ $ npm install --save nosqwal-memory
 
 - [In memory](https://www.npmjs.com/package/nosqwal-memory)
 - [Couchbase](https://github.com/mastilver/nosqwal-couchbase)
+- [OrientDb](https://github.com/mastilver/nosqwal-orientdb)
 
 ## Usage
 
