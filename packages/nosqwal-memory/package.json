@@ -13,8 +13,8 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "nyc ava",
-    "postinstall": "rm -rf test && cp -r node_modules/nosqwal-test/test test"
+    "pretest": "rm -rf test && cp -r node_modules/nosqwal-test/test test",
+    "test": "nyc ava"
   },
   "files": [
     "index.js"
