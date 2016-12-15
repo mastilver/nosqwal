@@ -139,9 +139,7 @@ Operator can be:
 | `$gte` | gretter or equal to | `string`,`number`,`Date` | `string`,`number`,`Date` |
 | `$lt` | lower than | `string`,`number`,`Date` | `string`,`number`,`Date` |
 | `$lte` | lower or equal to | `string`,`number`,`Date` | `string`,`number`,`Date` |
-| `$contains` | string contains substring | `string` | `string` |
-| `$in` | array contains value | `any` | `Array` |
-| `$nin` | array do not contains value | `any` | `Array` |
+| `$contains` | string/array contains | `any` | `string`, `Array` |
 | `$len` | array length equal | `number` | `Array` |
 
 #### orderBy
