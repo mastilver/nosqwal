@@ -77,6 +77,12 @@ module.exports = function () {
                         query = query.limit(limit);
                     }
 
+                    /* where = Object.keys(where).reduce((prev, key) => {
+                        return Object.assign({
+                            [key.replace('[]', '')]: where[key]
+                        }, prev);
+                    }, {}); */
+
                     const docs = query
                                 .find(where)
                                 .data();
