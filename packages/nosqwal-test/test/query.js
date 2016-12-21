@@ -46,3 +46,33 @@ test('query with eq condition', async t => {
     t.is(users.length, 1);
     t.truthy(users.find(x => x.name === 'alice'));
 });
+
+test('query with multiple conditions', async t => {
+    const userCollection = getCollection();
+
+    await userCollection.create({
+        name: 'bob',
+        surname: 'smith'
+    });
+
+    await userCollection.create({
+        name: 'bob',
+        surname: 'may'
+    });
+
+    await userCollection.create({
+        name: 'alice',
+        surname: 'parks'
+    });
+
+    const users = await userCollection.query({
+        where: {
+            name: 'bob',
+            surname: 'smith'
+        }
+    });
+
+    t.is(users.length, 1);
+    t.is(users[0].name, 'bob');
+    t.is(users[0].surname, 'smith');
+});

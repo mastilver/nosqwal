@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "xo && lerna run test",
-    "bootstrap": "lerna bootstrap && lerna run postinstall"
+    "bootstrap": "lerna bootstrap"
   },
   "files": [
     "index.js"

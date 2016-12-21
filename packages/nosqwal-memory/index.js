@@ -55,7 +55,7 @@ module.exports = function () {
                 query(options) {
                     // NOTE: node@4 doesn't support spead opperator by default
                     options = options || {};
-                    const where = options.where;
+                    const where = options.where || {};
                     const orderBy = options.orderBy || [];
                     const limit = options.limit;
                     const offset = options.offset || 0;
@@ -83,9 +83,13 @@ module.exports = function () {
                         }, prev);
                     }, {}); */
 
-                    const docs = query
-                                .find(where)
-                                .data();
+                    Object.keys(where).forEach(key => {
+                        query = query.find({
+                            [key]: where[key]
+                        });
+                    });
+
+                    const docs = query.data();
 
                     return Promise.resolve(docs);
                 }
