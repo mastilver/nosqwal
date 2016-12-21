@@ -34,7 +34,8 @@
     "esnext": true,
     "space": 4,
     "ignores": [
-      "**/coverage/**"
+      "**/coverage/**",
+      "packages/nosqwal-memory/test/**"
     ],
     "rules": {
       "ava/no-ignored-test-files": "off",

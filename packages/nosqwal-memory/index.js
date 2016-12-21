@@ -71,12 +71,6 @@ module.exports = function () {
                         query = query.compoundsort(lokiOrderBy);
                     }
 
-                    query = query.offset(offset);
-
-                    if (limit != null) {
-                        query = query.limit(limit);
-                    }
-
                     /* where = Object.keys(where).reduce((prev, key) => {
                         return Object.assign({
                             [key.replace('[]', '')]: where[key]
@@ -88,6 +82,12 @@ module.exports = function () {
                             [key]: where[key]
                         });
                     });
+
+                    query = query.offset(offset);
+
+                    if (limit != null) {
+                        query = query.limit(limit);
+                    }
 
                     const docs = query.data();
 
