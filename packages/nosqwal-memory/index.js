@@ -37,8 +37,10 @@ module.exports = function () {
                 update(newDoc) {
                     return this.get(newDoc.id)
                         .then(oldDoc => {
-                            const updatedDoc = Object.assign({}, newDoc);
-                            updatedDoc.$loki = oldDoc.$loki;
+                            const updatedDoc = Object.assign({}, newDoc, {
+                                $loki: oldDoc.$loki,
+                                meta: oldDoc.meta
+                            });
 
                             collection.update(updatedDoc);
                             return updatedDoc;
