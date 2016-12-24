@@ -67,8 +67,8 @@ test('query with multiple conditions', async t => {
 
     const users = await userCollection.query({
         where: {
-            name: {$eq:'bob'},
-            surname: {$eq:'smith'}
+            name: {$eq: 'bob'},
+            surname: {$eq: 'smith'}
         }
     });
 
