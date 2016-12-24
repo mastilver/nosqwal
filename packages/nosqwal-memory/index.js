@@ -84,7 +84,8 @@ module.exports = function () {
                         Object.keys(where).forEach(key => {
                             const operator = Object.keys(where[key])[0];
 
-                            if (!['$eq', '$contains'].includes(operator)) {
+                            // NOTE: node@4 doesn't have Array.includes
+                            if (['$eq', '$contains'].indexOf(operator) === -1) {
                                 throw new Error(`Operator: ${operator} not handled`);
                             }
 
