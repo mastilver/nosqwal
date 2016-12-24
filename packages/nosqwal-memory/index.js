@@ -55,45 +55,56 @@ module.exports = function () {
                 },
 
                 query(options) {
-                    // NOTE: node@4 doesn't support spead opperator by default
-                    options = options || {};
-                    const where = options.where || {};
-                    const orderBy = options.orderBy || [];
-                    const limit = options.limit;
-                    const offset = options.offset || 0;
+                    return Promise.resolve()
+                    .then(() => {
+                        // NOTE: node@4 doesn't support spead opperator by default
+                        options = options || {};
+                        const where = options.where || {};
+                        const orderBy = options.orderBy || [];
+                        const limit = options.limit;
+                        const offset = options.offset || 0;
 
-                    let query = collection.chain();
+                        let query = collection.chain();
 
-                    if (orderBy.length > 0) {
-                        const lokiOrderBy = orderBy.map(x => {
-                            const isAsc = x[1] != null && !x[1];
-                            return [x[0], isAsc];
+                        if (orderBy.length > 0) {
+                            const lokiOrderBy = orderBy.map(x => {
+                                const isAsc = x[1] != null && !x[1];
+                                return [x[0], isAsc];
+                            });
+
+                            query = query.compoundsort(lokiOrderBy);
+                        }
+
+                        /* where = Object.keys(where).reduce((prev, key) => {
+                            return Object.assign({
+                                [key.replace('[]', '')]: where[key]
+                            }, prev);
+                        }, {}); */
+
+                        Object.keys(where).forEach(key => {
+                            const operator = Object.keys(where[key])[0];
+
+                            if (!['$eq', '$contains'].includes(operator)) {
+                                throw new Error(`Operator: ${operator} not handled`);
+                            }
+
+                            query = query.find({
+                                [key]: {
+                                    [operator]: where[key][operator]
+                                }
+                            });
                         });
 
-                        query = query.compoundsort(lokiOrderBy);
-                    }
+                        query = query.offset(offset);
 
-                    /* where = Object.keys(where).reduce((prev, key) => {
-                        return Object.assign({
-                            [key.replace('[]', '')]: where[key]
-                        }, prev);
-                    }, {}); */
+                        if (limit != null) {
+                            query = query.limit(limit);
+                        }
 
-                    Object.keys(where).forEach(key => {
-                        query = query.find({
-                            [key]: where[key]
-                        });
+                        const docs = query.data();
+
+                        return docs;
                     });
-
-                    query = query.offset(offset);
-
-                    if (limit != null) {
-                        query = query.limit(limit);
-                    }
-
-                    const docs = query.data();
-
-                    return Promise.resolve(docs);
                 }
             };
         }
