@@ -1,6 +1,6 @@
 {
   "name": "nosqwal",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "My superior module",
   "license": "MIT",
   "repository": "mastilver/nosqwal",
@@ -20,7 +20,7 @@
     ""
   ],
   "dependencies": {
-    "nosqwal-memory": "^0.4.5"
+    "nosqwal-memory": "^0.4.6"
   },
   "devDependencies": {}
 }
