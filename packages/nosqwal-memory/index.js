@@ -6,9 +6,12 @@ const Loki = require('lokijs');
 module.exports = function () {
     const db = new Loki();
 
+    const collections = {};
+
     return {
         defineCollection(collectionName) {
-            const collection = db.addCollection(collectionName);
+            const collection = collections[collectionName] || db.addCollection(collectionName);
+            collections[collectionName] = collection;
 
             return {
                 create(doc) {
