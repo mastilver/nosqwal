@@ -112,4 +112,4 @@ test('make sure ids are valids', async t => {
     t.is((await userCollection.get(users[7].id)).name, 'user-7');
     t.is((await userCollection.get(users[8].id)).name, 'user-8');
     t.is((await userCollection.get(users[9].id)).name, 'user-9');
-})
+});

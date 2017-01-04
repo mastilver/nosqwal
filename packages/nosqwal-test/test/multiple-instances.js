@@ -10,11 +10,14 @@ test('perform actions accross muliple instance of the same collection', async t 
     const instance1 = db.defineCollection(name);
     const instance2 = db.defineCollection(name);
 
-    const savedUser = await instance1.create({
+    const savedUser1 = await instance1.create({
         name: 'alice'
     });
 
-    const user = await instance2.get(savedUser.id);
+    const savedUser2 = await instance2.create({
+        name: 'bob'
+    });
 
-    t.is(user.name, 'alice');
+    t.is((await instance2.get(savedUser1.id)).name, 'alice');
+    t.is((await instance1.get(savedUser2.id)).name, 'bob');
 });
