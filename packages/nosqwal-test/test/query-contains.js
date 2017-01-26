@@ -8,7 +8,7 @@ function getCollection() {
     return db.defineCollection(cuid());
 }
 
-test('using $in operator', async t => {
+test('using $contains operator', async t => {
     const raceCollection = getCollection();
 
     await raceCollection.create({

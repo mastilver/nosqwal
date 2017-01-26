@@ -88,7 +88,7 @@ module.exports = function () {
                             const operator = Object.keys(where[key])[0];
 
                             // NOTE: node@4 doesn't have Array.includes
-                            if (['$eq', '$contains', '$ne', '$gt', '$gte', '$lt', '$lte'].indexOf(operator) === -1) {
+                            if (['$eq', '$contains', '$ne', '$gt', '$gte', '$lt', '$lte', '$in'].indexOf(operator) === -1) {
                                 throw new Error(`Operator: ${operator} not handled`);
                             }
 

@@ -140,7 +140,7 @@ Operator can be:
 | `$lt` | lower than | `string`,`number`,`Date` | `string`,`number`,`Date` |
 | `$lte` | lower or equal to | `string`,`number`,`Date` | `string`,`number`,`Date` |
 | `$contains` | string/array contains | `any` | `string`, `Array` |
-| `$len` | array length equal | `number` | `Array` |
+| `$in` | is in array | `Array` | `any` |
 
 #### orderBy
 
