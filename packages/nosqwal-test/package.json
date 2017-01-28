@@ -24,5 +24,6 @@
   },
   "devDependencies": {
     "ava": "^0.17.0"
-  }
+  },
+  "xo": false
 }
