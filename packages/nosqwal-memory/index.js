@@ -93,7 +93,7 @@ module.exports = function () {
                             }
 
                             query = query.find({
-                                [key]: {
+                                [key.replace(/\[]/g, '')]: {
                                     [operator]: where[key][operator]
                                 }
                             });
