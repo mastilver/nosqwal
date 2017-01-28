@@ -1,6 +1,6 @@
 {
   "name": "nosqwal-memory",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "My sweet module",
   "license": "MIT",
   "repository": "mastilver/nosqwal-memory",
@@ -30,7 +30,7 @@
     "ava": "^0.15.2",
     "coveralls": "^2.11.12",
     "nyc": "^7.1.0",
-    "nosqwal-test": "^0.5.0"
+    "nosqwal-test": "^0.6.0"
   },
   "nyc": {
     "reporter": [
